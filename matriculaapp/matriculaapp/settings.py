@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'widget_tweaks',
     'cursos.apps.CursosConfig',
+    'areadeconhecimento.apps.AreadeconhecimentoConfig',
+    'disciplinas.apps.DisciplinasConfig',
 ]
 
 MIDDLEWARE = [
