@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <title>{% block title %}Nome do meu App{% endblock title %}</title>
+    <title>{% block title %}Matricula App{% endblock title %}</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,11 +21,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown05">
-                        <a class="dropdown-item" href="#">Clientes</a>
-                        <a class="dropdown-item" href="#">Pedidos</a>
-                        <a class="dropdown-item" href="#">Produtos</a>
+                        <a class="dropdown-item" href="#">Alunos</a>
+                        <a class="dropdown-item" href="{% url 'disciplinas:list_disciplinas' %}">Disciplinas</a>
+                        <a class="dropdown-item" href="#">Matricula</a>
                         <a class="dropdown-item" href="{% url 'cursos:list_cursos' %}">Cursos</a>
-                        <a class="dropdown-item" href="#">Redes Sociais</a>
+                        <a class="dropdown-item" href="{% url 'areadeconhecimento:list_areadeconhecimento' %}">Área de conhecimento</a>
                     </div>
                 </li>
             </ul>
