@@ -21,10 +21,10 @@
                     <th scope="col">Descricao</th>
                     <th scope="col">Semestre</th>
                     <th scope="col">Ativo</th>
-                    <th scope="col">Categoria</th>
+                    <th scope="col">Curso</th>
                     <th scope="col">Foto</th>
                     <th scope="col">Documento</th>
-                    <th scope="col">Área de Conhecimento</th>
+                    <th scope="col">Áreas de Conhecimento</th>
                     <th scope="col"></th>
                     </tr>
                 </thead>
@@ -45,17 +45,17 @@
                             </td>
                             <td>{{ disciplina.curso }}</td>
                             <td>
-                                {% for disciplina_areadeconhecimento in disciplina_areadeconhecimentos %}
-                                    {% if disciplina_areadeconhecimento.disciplina_id == disciplina.id %}
-                                        <li>{{ disciplina_areadeconhecimento.areadeconhecimento }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
-                            <td>
                                 <img src="{{ disciplina.photo.url }}" width="50" height="50">
                             </td>
                             <td>
                                 <a href="{{ disciplina.doc.url }}" >{{ disciplina.doc.url }}</a>
+                            </td>
+                            <td>
+                                {% for disciplina_areadeconhecimento in disciplina_areadeconhecimento %}
+                                    {% if disciplina_areadeconhecimento.disciplina_id == disciplina.id %}
+                                        <li>{{ disciplina_areadeconhecimento.areadeconhecimento }}</li>
+                                    {% endif %}
+                                {% endfor %}
                             </td>
                             <td>
                                 <a href="{% url 'disciplinas:edit_disciplina' disciplina.id %}" class="btn btn-primary btn-sm">Editar</a>
