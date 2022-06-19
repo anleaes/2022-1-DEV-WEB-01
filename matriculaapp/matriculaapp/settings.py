@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'disciplinas.apps.DisciplinasConfig',
     'alunos.apps.AlunosConfig',
     'matriculas.apps.MatriculasConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [

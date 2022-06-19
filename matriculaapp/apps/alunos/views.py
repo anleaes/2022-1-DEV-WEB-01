@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import AlunoForm
 from .models import Aluno
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_aluno(request):
     template_name = 'alunos/add_aluno.html'
     context = {}
@@ -19,6 +21,7 @@ def add_aluno(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_alunos(request):
     template_name = 'alunos/list_alunos.html'
     alunos = Aluno.objects.filter(user=request.user)
@@ -27,6 +30,7 @@ def list_alunos(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_aluno(request, id_aluno):
     template_name = 'alunos/add_aluno.html'
     context ={}
@@ -40,6 +44,7 @@ def edit_aluno(request, id_aluno):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_aluno(request, id_aluno):
     aluno = Aluno.objects.get(id=id_aluno)
     if aluno.user == request.user:
@@ -48,6 +53,7 @@ def delete_aluno(request, id_aluno):
         return redirect('core:home')
     return redirect('alunos:list_alunos')
 
+@login_required(login_url='/contas/login/')
 def search_alunos(request):
     template_name = 'alunos/list_alunos.html'
     query = request.GET.get('query')

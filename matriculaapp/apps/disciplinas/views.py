@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import DisciplinaForm
 from .models import Disciplina, Areadeconhecimento, DisciplinaAreadeconhecimento
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_disciplina(request):
     template_name = 'disciplinas/add_disciplina.html'
     context = {}
@@ -19,6 +21,7 @@ def add_disciplina(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_disciplinas(request):
     template_name = 'disciplinas/list_disciplinas.html'
     disciplina_areadeconhecimento = DisciplinaAreadeconhecimento.objects.filter()
@@ -31,6 +34,7 @@ def list_disciplinas(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_disciplina(request, id_disciplina):
     template_name = 'disciplinas/add_disciplina.html'
     context ={}
@@ -44,6 +48,7 @@ def edit_disciplina(request, id_disciplina):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_disciplina(request, id_disciplina):
     disciplina = Disciplina.objects.get(id=id_disciplina)
     if disciplina.user == request.user:

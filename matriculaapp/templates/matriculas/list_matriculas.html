@@ -20,8 +20,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Status</th>
                     <th scope="col">Aluno</th>
-                    <th scope="col">Preco Total</th>
-                    <th scope="col">Itens de pedido</th>
+                    <th scope="col"></th>
+                    <th scope="col">Disciplinas Matriculadas</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     </tr>
@@ -54,26 +54,26 @@
                                     {% endif %}
                                 {% endfor %}   
                             </td>
-                            <td>
+                            <!-- <td>
                                 {% if matricula.status == 'Finalizado' or matricula.status == 'Cancelado' %}
                                     <p style="color:darkgray;" >R$ {{ matricula.total_price }}</p>
                                 {% else %}
                                     R$ {{ matricula.total_price }}
                                 {% endif %}
-                            </td>
+                            </td> -->
                             <td>
                                 {% if matricula.status == 'Finalizado' or matricula.status == 'Cancelado' %}
                                     <a href="#" class="btn btn-primary btn-sm disabled">Adicionar itens</a>
                                 {% else %}
-                                    <a href="{% url 'matriculas:add_matricula_item' matricula.id %}" class="btn btn-primary btn-sm">Adicionar itens</a>
+                                    <a href="{% url 'matriculas:add_matricula_item' matricula.id %}" class="btn btn-primary btn-sm">Adicionar Disciplinas</a>
                                 {% endif %}
                                 <br /><br />
                                 {% for matricula_item in matricula_items %}
                                     {% if matricula_item.matricula_id == matricula.id %}
-                                        Produto: {{matricula_item.disciplina}}<br /> 
-                                        Quantidade: {{ matricula_item.quantity}}<br />
-                                        Valor Unitario: R$ {{ matricula_item.unitary_price }}<br />
-                                        <a href="{% url 'matriculas:delete_matricula_item' matricula_item.id %}">Excluir Item</a><br /><br />
+                                        Disciplina: {{matricula_item.disciplina}}<br /> 
+                                        <!-- Quantidade: {{ matricula_item.quantity}}<br /> -->
+                                        <!-- Valor Unitario: R$ {{ matricula_item.unitary_price }}<br /> -->
+                                        <a href="{% url 'matriculas:delete_matricula_item' matricula_item.id %}">Excluir Disciplina</a><br /><br />
                                     {% endif %}
                                 {% endfor %}
                             </td>
