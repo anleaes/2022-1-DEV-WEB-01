@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import MatriculaForm, MatriculaItemForm
 from .models import Matricula , MatriculaItem, Disciplina, Aluno
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_matricula(request, id_aluno):
     template_name = 'matriculas/add_matricula.html'
     context = {}
@@ -20,6 +22,7 @@ def add_matricula(request, id_aluno):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_matriculas(request):
     template_name = 'matriculas/list_matriculas.html'
     matriculas = Matricula.objects.filter(user=request.user)
@@ -34,11 +37,13 @@ def list_matriculas(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_matricula(request, id_matricula):
     matricula = Matricula.objects.get(id=id_matricula)
     matricula.delete()
     return redirect('matriculas:list_matriculas')
 
+@login_required(login_url='/contas/login/')
 def add_matricula_item(request, id_matricula):
     template_name = 'matriculas/add_matricula_item.html'
     context = {}
@@ -55,11 +60,13 @@ def add_matricula_item(request, id_matricula):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_matricula_item(request, id_matricula_item):
     matriculaitem = MatriculaItem.objects.get(id=id_matricula_item)
     matriculaitem.delete()
     return redirect('matriculas:list_matriculas')
 
+@login_required(login_url='/contas/login/')
 def edit_matricula_status(request, id_matricula):
     template_name = 'matriculas/edit_matricula_status.html'
     context ={}

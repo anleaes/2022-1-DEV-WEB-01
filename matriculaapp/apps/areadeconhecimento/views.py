@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import AreadeconhecimentoForm
 from .models import Areadeconhecimento
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_areadeconhecimento(request):
     template_name = 'areadeconhecimento/add_areadeconhecimento.html'
     context = {}
@@ -19,6 +21,7 @@ def add_areadeconhecimento(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_areadeconhecimento(request):
     template_name = 'areadeconhecimento/list_areadeconhecimento.html'
     areadeconhecimento = Areadeconhecimento.objects.filter(user=request.user)
@@ -27,6 +30,7 @@ def list_areadeconhecimento(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_areadeconhecimento(request, id_areadeconhecimento):
     template_name = 'areadeconhecimento/add_areadeconhecimento.html'
     context ={}
@@ -40,6 +44,7 @@ def edit_areadeconhecimento(request, id_areadeconhecimento):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_areadeconhecimento(request, id_areadeconhecimento):
     areadeconhecimento = Areadeconhecimento.objects.get(id=id_areadeconhecimento)
     if areadeconhecimento.user == request.user:
