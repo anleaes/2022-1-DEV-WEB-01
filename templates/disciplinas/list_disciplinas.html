@@ -22,6 +22,7 @@
                     <th scope="col">Semestre</th>
                     <th scope="col">Ativo</th>
                     <th scope="col">Curso</th>
+                    <th scope="col">Foto</th>
                     <th scope="col">Plano de Atividades</th>
                     <th scope="col">Áreas de Conhecimento</th>
                     <th scope="col"></th>
@@ -43,9 +44,9 @@
                                 {% endif %}
                             </td>
                             <td>{{ disciplina.curso }}</td>
-                            <!-- <td>
+                            <td>
                                 <img src="{{ disciplina.photo.url }}" width="50" height="50">
-                            </td> -->
+                            </td>
                             <td>
                                 <a href="{{ disciplina.doc.url }}" >{{ disciplina.doc.url }}</a>
                             </td>
